@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/screens/albums.dart';
 import 'package:practice/screens/home.dart';
+import 'package:practice/screens/logo.dart';
 import 'package:practice/screens/lyrics.dart';
 import 'package:practice/screens/allSongs.dart';
 import 'package:practice/screens/songsList.dart';
@@ -32,6 +33,10 @@ class Enzemer extends StatelessWidget {
     routes: [
       GoRoute(
         path: '/',
+        builder: (context, state) => Logo(),
+      ),
+      GoRoute(
+        path: '/home',
         builder: (context, state) => Home(),
       ),
       GoRoute(

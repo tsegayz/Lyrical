@@ -17,11 +17,9 @@ class _LogoState extends State<Logo> {
   void initState() {
     super.initState();
 
-    print('initState called');
     Timer(
       Duration(seconds: 5),
       () {
-        print('Navigating to home page');
         Navigator.pushReplacementNamed(context, '/home');
       },
     );

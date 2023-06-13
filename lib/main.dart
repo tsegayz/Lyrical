@@ -1,27 +1,26 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_import, prefer_typing_uninitialized_variables
-
 import 'package:flutter/material.dart';
-import 'package:practice/screens/albums.dart';
-import 'package:practice/screens/home.dart';
-import 'package:practice/screens/logo.dart';
-import 'package:practice/screens/lyrics.dart';
-import 'package:practice/screens/allSongs.dart';
-import 'package:practice/screens/songsList.dart';
-import 'package:practice/screens/singers.dart';
-import 'package:practice/screens/kidsSong.dart';
-import 'package:practice/screens/englishSong.dart';
-import 'package:practice/screens/favorite.dart';
-import 'package:practice/screens/menu.dart';
-import 'package:practice/screens/newSongs.dart';
-import 'package:practice/screens/searchAll.dart';
-
 import 'package:go_router/go_router.dart';
 
+import 'package:lyrical/screens/albums.dart';
+import 'package:lyrical/screens/home.dart';
+import 'package:lyrical/screens/logo.dart';
+import 'package:lyrical/screens/lyrics.dart';
+import 'package:lyrical/screens/allSongs.dart';
+import 'package:lyrical/screens/songsList.dart';
+import 'package:lyrical/screens/singers.dart';
+import 'package:lyrical/screens/kidsSong.dart';
+import 'package:lyrical/screens/englishSong.dart';
+import 'package:lyrical/screens/favorite.dart';
+import 'package:lyrical/screens/menu.dart';
+import 'package:lyrical/screens/newSongs.dart';
+import 'package:lyrical/screens/searchAll.dart';
+
 void main() {
-  runApp(Enzemer());
+  runApp(Lyrical());
 }
 
-class Enzemer extends StatelessWidget {
+class Lyrical extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp.router(
         routeInformationParser: _router.routeInformationParser,

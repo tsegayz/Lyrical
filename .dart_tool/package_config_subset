@@ -4,8 +4,8 @@ file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/async-2.9.0/
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/async-2.9.0/lib/
 bloc
 2.12
-file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/bloc-8.1.1/
-file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/bloc-8.1.1/lib/
+file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/bloc-8.1.2/
+file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/bloc-8.1.2/lib/
 boolean_selector
 2.12
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/
@@ -47,9 +47,9 @@ flutter_lints
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/lib/
 go_router
-2.17
-file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/go_router-6.2.0/
-file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/go_router-6.2.0/lib/
+2.18
+file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/go_router-6.5.9/
+file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/go_router-6.5.9/lib/
 google_fonts
 2.12
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/google_fonts-2.3.3/
@@ -174,7 +174,7 @@ xdg_directories
 2.17
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/xdg_directories-1.0.0/
 file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/xdg_directories-1.0.0/lib/
-practice
+lyrical
 2.16
 file:///home/tsega/Lyrical/
 file:///home/tsega/Lyrical/lib/

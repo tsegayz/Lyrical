@@ -211,61 +211,64 @@ class _HomeState extends State<Home> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-          elevation: 0.0,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 25,
-                color: Color.fromARGB(255, 0, 27, 50),
-              ),
-              label: 'Home',
+        elevation: 0.0,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              size: 25,
+              color: Color.fromARGB(255, 0, 27, 50),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.music_note,
-                size: 25,
-                color: Color.fromARGB(255, 0, 27, 50),
-              ),
-              label: 'New Songs',
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.music_note,
+              size: 25,
+              color: Color.fromARGB(255, 0, 27, 50),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                size: 25,
-                color: Color.fromARGB(255, 0, 27, 50),
-              ),
-              label: 'All Songs',
+            label: 'New Songs',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              size: 25,
+              color: Color.fromARGB(255, 0, 27, 50),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                size: 25,
-                color: Color.fromARGB(255, 0, 27, 50),
-              ),
-              label: 'Menu',
-              // backgroundColor: Colors.pink,
+            label: 'All Songs',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              size: 25,
+              color: Color.fromARGB(255, 0, 27, 50),
             ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Color.fromARGB(255, 0, 27, 50),
-          onTap: (index) {
-            switch (index) {
-              case 0:
-                GoRouter.of(context).go('/');
-                break;
-              case 1:
-                GoRouter.of(context).go('/newSongs');
-                break;
-              case 2:
-                GoRouter.of(context).go('/searchAll');
-                break;
-              case 3:
-                GoRouter.of(context).go('/menu');
-                break;
-            }
+            label: 'Menu',
+            // backgroundColor: Colors.pink,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromARGB(255, 0, 27, 50),
+        onTap: (index) {
+          setState(() {
             _selectedIndex = index;
-          }),
+          });
+          switch (index) {
+            case 0:
+              GoRouter.of(context).go('/');
+              break;
+            case 1:
+              GoRouter.of(context).go('/newSongs');
+              break;
+            case 2:
+              GoRouter.of(context).go('/searchAll');
+              break;
+            case 3:
+              GoRouter.of(context).go('/menu');
+              break;
+          }
+        },
+      ),
     );
   }
 }

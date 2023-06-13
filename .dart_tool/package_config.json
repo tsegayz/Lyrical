@@ -9,7 +9,7 @@
     },
     {
       "name": "bloc",
-      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/bloc-8.1.1",
+      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/bloc-8.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -93,9 +93,9 @@
     },
     {
       "name": "go_router",
-      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/go_router-6.2.0",
+      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dartlang.org/go_router-6.5.9",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "google_fonts",
@@ -290,13 +290,13 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "practice",
+      "name": "lyrical",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2023-06-12T15:28:23.991073Z",
+  "generated": "2023-06-13T10:23:13.595080Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-146.2.beta"
 }

@@ -1,0 +1,1 @@
+ /home/tsega/Desktop/Mobile/Lyrical/.dart_tool/flutter_build/f4ac79b1f69f34ff3533cdc212311dff/native_assets.yaml: 

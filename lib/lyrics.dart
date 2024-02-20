@@ -74,67 +74,73 @@ class Lyrics extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                top: 300,
-                left: 0,
-                child: Container(
-                  width: 412,
-                  height: 520,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(70.0),
-                      topRight: Radius.circular(70),
-                      bottomLeft: Radius.circular(0),
-                      bottomRight: Radius.circular(0),
+              Container(
+                margin: EdgeInsets.only(top: 298),
+                width: 412,
+                height: 520, 
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(70.0),
+                    topRight: Radius.circular(70),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(0),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 0,
+                      blurRadius: 3,
+                      offset: Offset(0, 0),
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 0,
-                        blurRadius: 3,
-                        offset: Offset(0, 0),
-                      ),
+                  ],
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromARGB(255, 192, 199, 206),
+                      Color.fromARGB(255, 255, 255, 255),
                     ],
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color.fromARGB(255, 192, 199, 206),
-                        Color.fromARGB(255, 255, 255, 255),
-                      ],
-                    ),
                   ),
-                  child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 80), 
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 90),
-                          Text(
-                            'Hiyaw Amlak Nehe',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromARGB(255, 7, 17, 36),
-                              height: 1.5,
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Hiyaw Amlak Nehe' * 50,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Color.fromARGB(255, 7, 17, 36),
-                              height: 2,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 80), 
+                    Text(
+                      'Hiyaw Amlak Nehe',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 7, 17, 36),
+                        height: 1.5,
                       ),
                     ),
-                  ),
+                    SizedBox(
+                        height:
+                            10), 
+                    Expanded(
+                      child: SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(
+                              80, 0, 80, 30), 
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Hiyaw Amlak Nehe' * 50,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color.fromARGB(255, 7, 17, 36),
+                                  height: 2,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Positioned(

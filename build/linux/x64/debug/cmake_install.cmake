@@ -1,8 +1,8 @@
-# Install script for directory: /home/tsega/Desktop/flutter_practice/practice/linux
+# Install script for directory: /home/tsega/Desktop/Mobile/chainoftrust/linux
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle")
+  set(CMAKE_INSTALL_PREFIX "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,83 +39,95 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
   
-  file(REMOVE_RECURSE "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/")
+  file(REMOVE_RECURSE "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/")
   
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice")
+  if(EXISTS "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice"
+         FILE "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust"
          RPATH "$ORIGIN/lib")
   endif()
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice")
+   "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle" TYPE EXECUTABLE FILES "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/intermediates_do_not_run/practice")
-  if(EXISTS "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice")
+file(INSTALL DESTINATION "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle" TYPE EXECUTABLE FILES "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/intermediates_do_not_run/chainoftrust")
+  if(EXISTS "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice"
-         OLD_RPATH "/home/tsega/Desktop/flutter_practice/practice/linux/flutter/ephemeral:"
+         FILE "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust"
+         OLD_RPATH "/home/tsega/Desktop/Mobile/chainoftrust/linux/flutter/ephemeral:"
          NEW_RPATH "$ORIGIN/lib")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/snap/flutter/current/usr/bin/strip" "$ENV{DESTDIR}/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/practice")
+      execute_process(COMMAND "/snap/flutter/current/usr/bin/strip" "$ENV{DESTDIR}/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/chainoftrust")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/data/icudtl.dat")
+   "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/data/icudtl.dat")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/data" TYPE FILE FILES "/home/tsega/Desktop/flutter_practice/practice/linux/flutter/ephemeral/icudtl.dat")
+file(INSTALL DESTINATION "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/data" TYPE FILE FILES "/home/tsega/Desktop/Mobile/chainoftrust/linux/flutter/ephemeral/icudtl.dat")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so")
+   "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/lib" TYPE FILE FILES "/home/tsega/Desktop/flutter_practice/practice/linux/flutter/ephemeral/libflutter_linux_gtk.so")
+file(INSTALL DESTINATION "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/lib" TYPE FILE FILES "/home/tsega/Desktop/Mobile/chainoftrust/linux/flutter/ephemeral/libflutter_linux_gtk.so")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/lib/")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/lib" TYPE DIRECTORY FILES "/home/tsega/Desktop/Mobile/chainoftrust/build/native_assets/linux/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
   
-  file(REMOVE_RECURSE "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/data/flutter_assets")
+  file(REMOVE_RECURSE "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/data/flutter_assets")
   
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/data/flutter_assets")
+   "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/data/flutter_assets")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/bundle/data" TYPE DIRECTORY FILES "/home/tsega/Desktop/flutter_practice/practice/build//flutter_assets")
+file(INSTALL DESTINATION "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/bundle/data" TYPE DIRECTORY FILES "/home/tsega/Desktop/Mobile/chainoftrust/build//flutter_assets")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/flutter/cmake_install.cmake")
+  include("/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/flutter/cmake_install.cmake")
 
 endif()
 
@@ -127,5 +139,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/tsega/Desktop/flutter_practice/practice/build/linux/x64/debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/tsega/Desktop/Mobile/chainoftrust/build/linux/x64/debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

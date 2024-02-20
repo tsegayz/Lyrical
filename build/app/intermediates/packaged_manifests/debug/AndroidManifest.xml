@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.practice"
+    package="com.example.chainoftrust"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="31" />
+        android:minSdkVersion="19"
+        android:targetSdkVersion="33" />
     <!--
-         Flutter needs it to communicate with the running application
+         The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,9 +19,9 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="practice" >
+        android:label="chainoftrust" >
         <activity
-            android:name="com.example.practice.MainActivity"
+            android:name="com.example.chainoftrust.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"

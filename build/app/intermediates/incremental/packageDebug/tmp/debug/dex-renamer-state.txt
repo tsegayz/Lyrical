@@ -1,4 +1,4 @@
-#Tue Jun 13 13:32:46 EAT 2023
-base.0=/home/tsega/Lyrical/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
+#Tue Feb 20 12:12:16 EAT 2024
+base.0=/home/tsega/Desktop/Mobile/Lyrical/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
+renamed.0=classes.dex

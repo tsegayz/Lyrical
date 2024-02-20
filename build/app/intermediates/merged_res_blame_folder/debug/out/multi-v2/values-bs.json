@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/tsega/Desktop/Mobile/Lyrical/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-bs/values-bs.xml",
+            "outputFile": "com.example.chainoftrust.app-mergeDebugResources-9:/values-bs/values-bs.xml",
             "map": [
                 {
-                    "source": "/home/tsega/.gradle/caches/transforms-3/fa3e23051d51d4a17ebf5018e7cbf8a1/transformed/core-1.6.0/res/values-bs/values-bs.xml",
+                    "source": "/home/tsega/.gradle/caches/transforms-3/d08c73bfb05384f2e52578171dbd141e/transformed/core-1.6.0/res/values-bs/values-bs.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

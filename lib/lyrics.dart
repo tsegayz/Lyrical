@@ -79,6 +79,7 @@ class Lyrics extends StatelessWidget {
                 left: 0,
                 child: Container(
                   width: 412,
+                  height: 520,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(70.0),
@@ -103,32 +104,35 @@ class Lyrics extends StatelessWidget {
                       ],
                     ),
                   ),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 80), // Adjust padding as needed
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 90),
-                        Text(
-                          'Hiyaw Amlak Nehe',
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromARGB(255, 7, 17, 36),
-                            height: 1.5,
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 80), 
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 90),
+                          Text(
+                            'Hiyaw Amlak Nehe',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 7, 17, 36),
+                              height: 1.5,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 20),
-                        Text(
-                          'Hiyaw Amlak Nehe' * 20,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Color.fromARGB(255, 7, 17, 36),
-                            height: 2,
+                          SizedBox(height: 20),
+                          Text(
+                            'Hiyaw Amlak Nehe' * 50,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromARGB(255, 7, 17, 36),
+                              height: 2,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

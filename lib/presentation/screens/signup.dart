@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'hexagon.dart';
 
 class SignUp extends StatelessWidget {
@@ -224,11 +225,16 @@ class SignUp extends StatelessWidget {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
-                              child: Text(
-                                'Sign up',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: TextButton(
+                                onPressed: () {
+                                  context.go('/home');
+                                },
+                                child: Text(
+                                  'Sign up',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                             ),

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
-
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-import 'hexagon.dart'; 
+import 'hexagon.dart';
 
 class Welcome extends StatelessWidget {
   final List<String> imagePaths = [
@@ -18,6 +18,10 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration(seconds: 5), () {
+      context.go('/home');
+    });
+
     return Scaffold(
       body: SafeArea(
         child: Directionality(
@@ -37,7 +41,8 @@ class Welcome extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color.fromARGB(255, 199, 199, 199).withOpacity(0.5),
+                        color: const Color.fromARGB(255, 199, 199, 199)
+                            .withOpacity(0.5),
                         spreadRadius: 0,
                         blurRadius: 3,
                         offset: Offset(5, 5),
@@ -131,21 +136,27 @@ class Welcome extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(60, 60, 60, 0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(60, 60, 60, 0),
+                child: SizedBox(
+                  width: 80, 
+                  height: 80, 
                   child: Image.asset(
                     'assets/headphone.jpg',
                     fit: BoxFit.contain,
                   ),
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Text(
-                  'click here to start',
-                  style: TextStyle(color: Colors.grey[400]),
+              Container(
+                margin: EdgeInsets.only(bottom: 100),
+                child: TextButton(
+                  onPressed: () {
+                    context.go('/home');
+                  },
+                  child: Text(
+                    'click here to start',
+                    style: TextStyle(color: Colors.grey[400]),
+                  ),
                 ),
               )
             ],

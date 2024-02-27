@@ -1,11 +1,21 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, depend_on_referenced_packages
 import 'package:flutter/material.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:go_router/go_router.dart';
 
 class ImageData {
   final String image;
   final String title;
 
   ImageData({required this.image, required this.title});
+}
+
+class BottomBar {
+  final IconData icon;
+  final String title;
+
+  BottomBar({required this.icon, required this.title});
 }
 
 class Album extends StatefulWidget {
@@ -28,50 +38,65 @@ class _AlbumState extends State<Album> {
     ImageData(image: 'assets/img_9.jpg', title: 'Bethelhem'),
   ];
 
+  final List<BottomBar> bars = [
+    BottomBar(icon: Icons.home_rounded, title: 'Home'),
+    BottomBar(icon: Icons.album_outlined, title: 'Artists'),
+    BottomBar(icon: Icons.music_note_rounded, title: 'Songs'),
+    BottomBar(icon: Icons.album_outlined, title: 'Albums'),
+    BottomBar(icon: Icons.person_outline, title: 'Account'),
+  ];
+  int selectedIndex = 3;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         titleSpacing: 0,
-        title: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-              ),
-              child: Row(
-                children: [
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Color.fromARGB(255, 88, 88, 88),
-                      size: 17,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 15),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: Color.fromARGB(255, 88, 88, 88),
+                        size: 17,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  Text(
-                    'Mezmur debter',
-                    style: TextStyle(
-                      fontFamily: 'OrelegaOne',
-                      fontSize: 20,
-                      color: Colors.grey[600],
+                    Text(
+                      'Mezmur debter',
+                      style: TextStyle(
+                        fontFamily: 'OrelegaOne',
+                        fontSize: 20,
+                        color: Colors.grey[600],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         actions: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(
-              'https://via.placeholder.com/150',
+          Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(
+                'https://via.placeholder.com/150',
+              ),
+              radius: 15,
             ),
-            radius: 15,
           ),
           SizedBox(width: 20),
         ],
@@ -90,31 +115,20 @@ class _AlbumState extends State<Album> {
                       'Recently added',
                       style: TextStyle(
                         fontFamily: 'OrelegaOne',
-                        fontSize: 18,
+                        fontSize: 17,
                         color: Colors.grey[600],
                       ),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'see all',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            size: 14,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _isSearchExpanded = !_isSearchExpanded;
-                            });
-                          },
-                        ),
-                      ],
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 14,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isSearchExpanded = !_isSearchExpanded;
+                        });
+                      },
                     )
                   ],
                 ),
@@ -122,8 +136,7 @@ class _AlbumState extends State<Album> {
                   height: 10,
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 10, right: 30),
+                  padding: const EdgeInsets.only(left: 10, right: 30),
                   child: SizedBox(
                     height: 140,
                     child: ListView.builder(
@@ -174,7 +187,7 @@ class _AlbumState extends State<Album> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left:12.0),
+                  padding: const EdgeInsets.only(left: 12.0),
                   child: Stack(
                     children: [
                       Row(
@@ -184,31 +197,20 @@ class _AlbumState extends State<Album> {
                             'All Album',
                             style: TextStyle(
                               fontFamily: 'OrelegaOne',
-                              fontSize: 18,
+                              fontSize: 17,
                               color: Colors.grey[600],
                             ),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                'see all',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 14,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _isSearchExpanded = !_isSearchExpanded;
-                                  });
-                                },
-                              ),
-                            ],
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 14,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _isSearchExpanded = !_isSearchExpanded;
+                              });
+                            },
                           )
                         ],
                       ),
@@ -294,17 +296,16 @@ class _AlbumState extends State<Album> {
                     ],
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 5),
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 0, right: 5),
+                  padding: const EdgeInsets.only(left: 0, right: 5),
                   child: SizedBox(
                     height: 420,
                     child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
-                        crossAxisSpacing:0,
-                        mainAxisSpacing: 20,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 10,
                       ),
                       itemCount: images.length,
                       itemBuilder: (BuildContext context, int index) {
@@ -315,7 +316,7 @@ class _AlbumState extends State<Album> {
                               child: Image.asset(
                                 images[index].image,
                                 width: 80,
-                                height: 80,
+                                height: 70,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -323,7 +324,7 @@ class _AlbumState extends State<Album> {
                             Text(
                               images[index].title,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontSize: 13,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey[600],
                               ),
@@ -331,7 +332,7 @@ class _AlbumState extends State<Album> {
                             Text(
                               'title one',
                               style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 11,
                                 color: Colors.grey[600],
                               ),
                             ),
@@ -345,6 +346,34 @@ class _AlbumState extends State<Album> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 65,
+        color: Color.fromARGB(255, 189, 192, 235),
+        backgroundColor: Colors.white,
+        animationDuration: Duration(milliseconds: 100),
+        items: bars
+            .map((data) => CurvedNavigationBarItem(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(data.icon, size: 22, color: Colors.white),
+                      Text(
+                        data.title,
+                        style: TextStyle(fontSize: 10, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ))
+            .toList(),
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+          context
+              .go(['/home', '/artist', '/song', '/album', '/account'][index]);
+        },
+        index: selectedIndex,
       ),
     );
   }

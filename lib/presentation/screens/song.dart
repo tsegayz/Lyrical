@@ -235,100 +235,102 @@ class _SongState extends State<Song> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 28, right: 5, top: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'All Songs',
-              style: TextStyle(
-                fontFamily: 'OrelegaOne',
-                fontSize: 17,
-                color: Colors.grey[600],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 28, right: 5, top: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'All Songs',
+                style: TextStyle(
+                  fontFamily: 'OrelegaOne',
+                  fontSize: 17,
+                  color: Colors.grey[600],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 17, right: 8),
-              child: SizedBox(
-                height: 630,
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: filteredImages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final imageData = filteredImages[index];
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: 20, right: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                height: 48,
-                                width: 48,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(12),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 1,
-                                      blurRadius: 4,
-                                      offset: Offset(2, 3),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 17, right: 8),
+                child: SizedBox(
+                  height: 630,
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: filteredImages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final imageData = filteredImages[index];
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 20, right: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: 48,
+                                  width: 48,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                        blurRadius: 4,
+                                        offset: Offset(2, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Icon(
+                                    Icons.music_note_rounded,
+                                    size: 22,
+                                  ),
+                                ),
+                                SizedBox(width: 15),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      imageData.title,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey[600],
+                                      ),
+                                    ),
+                                    Text(
+                                      imageData.artist,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey[600],
+                                      ),
                                     ),
                                   ],
                                 ),
-                                child: Icon(
-                                  Icons.music_note_rounded,
-                                  size: 22,
-                                ),
-                              ),
-                              SizedBox(width: 15),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    imageData.title,
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey[600],
-                                    ),
-                                  ),
-                                  Text(
-                                    imageData.artist,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey[600],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.more_horiz,
-                              size: 22,
+                              ],
                             ),
-                            onPressed: () {
-                              setState(() {
-                                _isSearchExpanded = !_isSearchExpanded;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    );
-                  },
+                            IconButton(
+                              icon: Icon(
+                                Icons.more_horiz,
+                                size: 22,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isSearchExpanded = !_isSearchExpanded;
+                                });
+                              },
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CurvedNavigationBar(

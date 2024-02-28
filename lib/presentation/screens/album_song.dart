@@ -17,19 +17,48 @@ class _AlbumSongState extends State<AlbumSong> {
   bool _isSearchExpanded = false;
 
   final List<ImageData> images = [
-    ImageData(image: 'assets/img_1.jpg', title: 'Aeb'),
-    ImageData(image: 'assets/img_2.jpg', title: 'Samuel'),
-    ImageData(image: 'assets/img_3.jpg', title: 'Yosef'),
-    ImageData(image: 'assets/img_4.jpg', title: 'Meskerem'),
-    ImageData(image: 'assets/img_5.jpg', title: 'Daniel'),
-    ImageData(image: 'assets/img_6.jpg', title: 'Lily'),
-    ImageData(image: 'assets/img_7.jpg', title: 'Mesfin'),
-    ImageData(image: 'assets/img_8.jpg', title: 'Dagmawi'),
-    ImageData(image: 'assets/img_9.jpg', title: 'Bethelhem'),
+    ImageData(
+      image: 'assets/img_1.jpg',
+      title: 'sasebew',
+    ),
+    ImageData(
+      image: 'assets/img_2.jpg',
+      title: 'tilik nehe',
+    ),
+    ImageData(
+      image: 'assets/img_3.jpg',
+      title: 'abetu amlake',
+    ),
+    ImageData(
+      image: 'assets/img_4.jpg',
+      title: 'melkam nehe',
+    ),
+    ImageData(
+      image: 'assets/img_5.jpg',
+      title: 'yenebse',
+    ),
+    ImageData(
+      image: 'assets/img_6.jpg',
+      title: 'medhanit',
+    ),
+    ImageData(
+      image: 'assets/img_7.jpg',
+      title: 'eyesus',
+    ),
+    ImageData(
+      image: 'assets/img_8.jpg',
+      title: 'amelkehalew',
+    ),
+    ImageData(
+      image: 'assets/img_9.jpg',
+      title: 'feker nehe',
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final String image = ModalRoute.of(context)!.settings.arguments as String;
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -44,14 +73,14 @@ class _AlbumSongState extends State<AlbumSong> {
                       height: 400,
                       child: ClipRRect(
                         child: Image.asset(
-                          'assets/img_1.jpg',
+                          image,
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                     Positioned.fill(
                       child: Container(
-                        color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
+                        color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.55),
                       ),
                     ),
                   ],
@@ -100,7 +129,7 @@ class _AlbumSongState extends State<AlbumSong> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
                           child: Image.asset(
-                            'assets/img_1.jpg',
+                            image,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -165,56 +194,69 @@ class _AlbumSongState extends State<AlbumSong> {
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: EdgeInsets.only(bottom: 20, right: 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
-                                      child: Image.asset(
-                                        images[index].image,
-                                        width: 55,
-                                        height: 45,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    SizedBox(width: 10),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          images[index].title,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey[600],
-                                          ),
-                                        ),
-                                        Text(
-                                          'title one',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey[600],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.more_horiz,
-                                    size: 22,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isSearchExpanded = !_isSearchExpanded;
-                                    });
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  '/lyrics',
+                                  arguments: {
+                                    'title': images[index].title,
+                                    'image': images[index].image,
                                   },
-                                )
-                              ],
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(12),
+                                        child: Image.asset(
+                                          images[index].image,
+                                          width: 55,
+                                          height: 45,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            images[index].title,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
+                                          Text(
+                                            'title one',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.more_horiz,
+                                      size: 22,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isSearchExpanded = !_isSearchExpanded;
+                                      });
+                                    },
+                                  )
+                                ],
+                              ),
                             ),
                           );
                         },

@@ -2,12 +2,11 @@
 import 'package:chainoftrust/logic/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'hexagon.dart';
 
-final _formKey = GlobalKey<FormState>();
-
 class SignUp extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
+
   final List<String> imagePaths = [
     'assets/img_1.jpg',
     'assets/img_2.jpg',
@@ -264,7 +263,7 @@ class SignUp extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  GoRouter.of(context).go('/home');
+                                  Navigator.pushNamed(context, '/home');
                                 }
                               },
                               style: ButtonStyle(

@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
-import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'hexagon.dart';
 
@@ -19,7 +18,7 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 5), () {
-      context.go('/signup');
+      Navigator.pushNamed(context, '/signup');
     });
 
     return Scaffold(
@@ -151,7 +150,7 @@ class Welcome extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 100),
                 child: TextButton(
                   onPressed: () {
-                    context.go('/home');
+                    Navigator.pushNamed(context, '/signup');
                   },
                   child: Text(
                     'click here to start',

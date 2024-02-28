@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class ImageData {
   final String image;
@@ -21,7 +20,6 @@ class BottomBar {
 }
 
 class Album extends StatefulWidget {
-
   @override
   _AlbumState createState() => _AlbumState();
 }
@@ -78,6 +76,7 @@ class _AlbumState extends State<Album> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         titleSpacing: 0,
         title: Padding(
@@ -334,8 +333,8 @@ class _AlbumState extends State<Album> {
                                         controller: searchController,
                                         decoration: InputDecoration(
                                           hintText: 'Search...',
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey[400]),
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey[400]),
                                           border: InputBorder.none,
                                         ),
                                         style: TextStyle(
@@ -363,34 +362,43 @@ class _AlbumState extends State<Album> {
                         itemCount: filteredImages.length,
                         itemBuilder: (BuildContext context, int index) {
                           final imageData = filteredImages[index];
-                          return Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.asset(
-                                  images[index].image,
-                                  width: 80,
-                                  height: 70,
-                                  fit: BoxFit.cover,
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                '/albumSong',
+                                arguments: images[index].image,
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    images[index].image,
+                                    width: 80,
+                                    height: 70,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 10),
-                              Text(
-                                imageData.album,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey[600],
+                                SizedBox(height: 10),
+                                Text(
+                                  imageData.album,
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[600],
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'title one',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  color: Colors.grey[600],
+                                Text(
+                                  'title one',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey[600],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           );
                         },
                       ),
@@ -425,8 +433,8 @@ class _AlbumState extends State<Album> {
           setState(() {
             selectedIndex = index;
           });
-          context
-              .go(['/home', '/artist', '/song', '/album', '/account'][index]);
+          Navigator.of(context).pushNamed(
+              ['/home', '/artist', '/song', '/album', '/account'][index]);
         },
         index: selectedIndex,
       ),

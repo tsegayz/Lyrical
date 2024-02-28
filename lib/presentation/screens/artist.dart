@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class ImageData {
   final String image;
   final String artist;
+  final String title;
 
-  ImageData({required this.image, required this.artist});
+  ImageData({required this.image, required this.artist, required this.title});
 }
 
 class BottomBar {
@@ -21,7 +21,6 @@ class BottomBar {
 }
 
 class Artist extends StatefulWidget {
-
   @override
   _ArtistState createState() => _ArtistState();
 }
@@ -33,15 +32,51 @@ class _ArtistState extends State<Artist> {
   int selectedIndex = 1;
 
   final List<ImageData> images = [
-    ImageData(image: 'assets/img_1.jpg', artist: 'Azeb'),
-    ImageData(image: 'assets/img_2.jpg', artist: 'Samuel'),
-    ImageData(image: 'assets/img_3.jpg', artist: 'Yosef'),
-    ImageData(image: 'assets/img_4.jpg', artist: 'Meskerem'),
-    ImageData(image: 'assets/img_5.jpg', artist: 'Daniel'),
-    ImageData(image: 'assets/img_6.jpg', artist: 'Lily'),
-    ImageData(image: 'assets/img_7.jpg', artist: 'Mesfin'),
-    ImageData(image: 'assets/img_8.jpg', artist: 'Dagmawi'),
-    ImageData(image: 'assets/img_9.jpg', artist: 'Bethelhem'),
+    ImageData(
+      image: 'assets/img_1.jpg',
+      artist: 'Azeb',
+      title: 'sasebew',
+    ),
+    ImageData(
+      image: 'assets/img_2.jpg',
+      artist: 'Samuel',
+      title: 'tilik nehe',
+    ),
+    ImageData(
+      image: 'assets/img_3.jpg',
+      artist: 'Yosef',
+      title: 'abetu amlake',
+    ),
+    ImageData(
+      image: 'assets/img_4.jpg',
+      artist: 'Meskerem',
+      title: 'melkam nehe',
+    ),
+    ImageData(
+      image: 'assets/img_5.jpg',
+      artist: 'Daniel',
+      title: 'yenebse',
+    ),
+    ImageData(
+      image: 'assets/img_6.jpg',
+      artist: 'Lily',
+      title: 'medhanit',
+    ),
+    ImageData(
+      image: 'assets/img_7.jpg',
+      artist: 'Mesfin',
+      title: 'eyesus',
+    ),
+    ImageData(
+      image: 'assets/img_8.jpg',
+      artist: 'Dagmawi',
+      title: 'amelkehalew',
+    ),
+    ImageData(
+      image: 'assets/img_9.jpg',
+      artist: 'Bethelhem',
+      title: 'feker nehe',
+    ),
   ];
   final List<BottomBar> bars = [
     BottomBar(icon: Icons.home_rounded, title: 'Home'),
@@ -78,6 +113,7 @@ class _ArtistState extends State<Artist> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         titleSpacing: 0,
         title: Padding(
@@ -262,68 +298,78 @@ class _ArtistState extends State<Artist> {
                       final imageData = filteredImages[index];
                       return Padding(
                         padding: EdgeInsets.only(bottom: 20, right: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 1,
-                                        blurRadius: 4,
-                                        offset: Offset(2, 4),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/artistAlbum',
+                              arguments: images[index].artist,
+                            );
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 4,
+                                          offset: Offset(2, 4),
+                                        ),
+                                      ],
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.asset(
+                                        imageData.image,
+                                        width: 55,
+                                        height: 45,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 15),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        imageData.artist,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey[600],
+                                        ),
+                                      ),
+                                      Text(
+                                        imageData.title,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey[600],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: Image.asset(
-                                      imageData.image,
-                                      width: 55,
-                                      height: 45,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 15),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      imageData.artist,
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[600],
-                                      ),
-                                    ),
-                                    Text(
-                                      'title one',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.grey[600],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            IconButton(
-                              icon: Icon(
-                                Icons.more_horiz,
-                                size: 22,
+                                ],
                               ),
-                              onPressed: () {
-                                setState(() {
-                                  _isSearchExpanded = !_isSearchExpanded;
-                                });
-                              },
-                            )
-                          ],
+                              IconButton(
+                                icon: Icon(
+                                  Icons.more_horiz,
+                                  size: 22,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _isSearchExpanded = !_isSearchExpanded;
+                                  });
+                                },
+                              )
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -357,7 +403,9 @@ class _ArtistState extends State<Artist> {
           setState(() {
             selectedIndex = index;
           });
-          context.go(['/home', '/artist', '/song', '/account'][index]);
+          final routes = ['/home', '/artist', '/song', '/album', '/account'];
+          final route = routes[index];
+          Navigator.of(context).pushNamed(route);
         },
         index: selectedIndex,
       ),

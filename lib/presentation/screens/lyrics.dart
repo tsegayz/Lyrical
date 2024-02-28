@@ -9,20 +9,13 @@ class ImageData {
 }
 
 class Lyrics extends StatelessWidget {
-  final List<ImageData> images = [
-    ImageData(image: 'assets/img_1.jpg', title: 'Aeb'),
-    ImageData(image: 'assets/img_2.jpg', title: 'Samuel'),
-    ImageData(image: 'assets/img_3.jpg', title: 'Yosef'),
-    ImageData(image: 'assets/img_4.jpg', title: 'Meskerem'),
-    ImageData(image: 'assets/img_5.jpg', title: 'Daniel'),
-    ImageData(image: 'assets/img_6.jpg', title: 'Lily'),
-    ImageData(image: 'assets/img_7.jpg', title: 'Mesfin'),
-    ImageData(image: 'assets/img_8.jpg', title: 'Dagmawi'),
-    ImageData(image: 'assets/img_9.jpg', title: 'Bethelhem'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> arguments =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    final String? title = arguments['title'];
+    final String? image = arguments['image'];
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -36,14 +29,14 @@ class Lyrics extends StatelessWidget {
                     height: 400,
                     child: ClipRRect(
                       child: Image.asset(
-                        'assets/img_1.jpg',
+                        image ?? '',
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Positioned.fill(
                     child: Container(
-                      color: Color.fromARGB(255, 39, 39, 39).withOpacity(0.5),
+                      color: Color.fromARGB(255, 22, 22, 22).withOpacity(0.5),
                     ),
                   ),
                 ],
@@ -75,13 +68,13 @@ class Lyrics extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 298),
+                margin: EdgeInsets.only(top: 320),
                 width: 412,
-                height: 520, 
+                height: 495,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(70.0),
-                    topRight: Radius.circular(70),
+                    topLeft: Radius.circular(90.0),
+                    topRight: Radius.circular(90),
                     bottomLeft: Radius.circular(0),
                     bottomRight: Radius.circular(0),
                   ),
@@ -97,7 +90,7 @@ class Lyrics extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromARGB(255, 192, 199, 206),
+                      Color.fromARGB(255, 221, 239, 255),
                       Color.fromARGB(255, 255, 255, 255),
                     ],
                   ),
@@ -105,24 +98,21 @@ class Lyrics extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 80), 
+                    SizedBox(height: 80),
                     Text(
-                      'Hiyaw Amlak Nehe',
+                      '$title',
                       style: TextStyle(
                         fontSize: 20,
                         color: Color.fromARGB(255, 7, 17, 36),
                         height: 1.5,
                       ),
                     ),
-                    SizedBox(
-                        height:
-                            10), 
+                    SizedBox(height: 10),
                     Expanded(
                       child: SingleChildScrollView(
                         physics: BouncingScrollPhysics(),
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(
-                              80, 0, 80, 30), 
+                          padding: EdgeInsets.fromLTRB(80, 0, 80, 30),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -144,7 +134,7 @@ class Lyrics extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 240,
+                top: 265,
                 left: 120,
                 child: Stack(
                   children: [
@@ -154,7 +144,7 @@ class Lyrics extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
-                          'assets/img_1.jpg',
+                          image ?? '',
                           fit: BoxFit.cover,
                         ),
                       ),

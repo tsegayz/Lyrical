@@ -80,28 +80,10 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flutter_web_plugins",
-      "rootUri": "file:///home/tsega/snap/flutter/common/flutter/packages/flutter_web_plugins",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "go_router",
-      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/go_router-13.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
       "name": "lints",
       "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "logging",
-      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/logging-1.2.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -200,7 +182,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-27T10:45:58.712647Z",
+  "generated": "2024-02-28T14:30:08.210466Z",
   "generator": "pub",
   "generatorVersion": "3.2.6"
 }

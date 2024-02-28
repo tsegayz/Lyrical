@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, depend_on_referenced_packages
+import 'package:chainoftrust/logic/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ImageData {
@@ -19,8 +21,6 @@ class BottomBar {
 }
 
 class Home extends StatefulWidget {
-  Home({super.key});
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -56,116 +56,26 @@ class _HomeState extends State<Home> {
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         titleSpacing: 0,
         title: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
-          child: Stack(
+          padding: const EdgeInsets.only(top: 15.0, left: 8),
+          child: Row(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Color.fromARGB(255, 88, 88, 88),
-                      size: 17,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  Text(
-                    'Mezmur debter',
-                    style: TextStyle(
-                      fontFamily: 'OrelegaOne',
-                      fontSize: 20,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
+              IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: Color.fromARGB(255, 88, 88, 88),
+                  size: 17,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-              Positioned(
-                right: 0,
-                top: 4,
-                bottom: 0,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (_isSearchExpanded)
-                      Positioned(
-                        right: 0,
-                        top: 0,
-                        bottom: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: Container(
-                            width: 125,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20.0),
-                                topRight: Radius.circular(0),
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(0),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 0,
-                                  blurRadius: 3,
-                                  offset: Offset(0, 0),
-                                ),
-                              ],
-                              color: Colors.white,
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              child: TextFormField(
-                                  decoration: InputDecoration(
-                                    hintText: 'Search...',
-                                    hintStyle:
-                                        TextStyle(color: Colors.grey[400]),
-                                    border: InputBorder.none,
-                                  ),
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                    Container(
-                      width: 34,
-                      height: 34,
-                      margin: EdgeInsets.only(right: 8),
-                      decoration: BoxDecoration(
-                        borderRadius: _isSearchExpanded
-                            ? BorderRadius.only(
-                                topRight: Radius.circular(20.0),
-                                bottomRight: Radius.circular(20),
-                              )
-                            : BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 0,
-                            blurRadius: 3,
-                            offset: Offset(2, 0),
-                          ),
-                        ],
-                        color: Colors.white,
-                      ),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.search,
-                          size: 22,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _isSearchExpanded = !_isSearchExpanded;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
+              Text(
+                'Mezmur debter',
+                style: TextStyle(
+                  fontFamily: 'OrelegaOne',
+                  fontSize: 20,
+                  color: Colors.grey[600],
                 ),
               ),
             ],
@@ -174,14 +84,37 @@ class _HomeState extends State<Home> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://via.placeholder.com/150',
+            child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 0,
+                    blurRadius: 3,
+                    offset: Offset(1, 1),
+                  ),
+                ],
+                shape: BoxShape.circle,
               ),
-              radius: 15,
+              child: Center(
+                child: BlocBuilder<UserCubit, UserState>(
+                  builder: (context, state) {
+                    return Text(
+                      state.email[0].toUpperCase(),
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 7, 39),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
-          SizedBox(width: 10),
+          SizedBox(width: 20),
         ],
       ),
       body: Column(
@@ -195,7 +128,7 @@ class _HomeState extends State<Home> {
                   'Albums',
                   style: TextStyle(
                     fontFamily: 'OrelegaOne',
-                    fontSize: 18,
+                    fontSize: 17,
                     color: Colors.grey[600],
                   ),
                 ),
@@ -252,7 +185,7 @@ class _HomeState extends State<Home> {
                         'New Songs',
                         style: TextStyle(
                           fontFamily: 'OrelegaOne',
-                          fontSize: 18,
+                          fontSize: 17,
                           color: Colors.grey[600],
                         ),
                       ),
@@ -318,7 +251,7 @@ class _HomeState extends State<Home> {
                       'Song list',
                       style: TextStyle(
                         fontFamily: 'OrelegaOne',
-                        fontSize: 18,
+                        fontSize: 17,
                         color: Colors.grey[600],
                       ),
                     ),
@@ -439,7 +372,8 @@ class _HomeState extends State<Home> {
           setState(() {
             selectedIndex = index;
           });
-          context.go(['/home', '/artist', '/song','/album', '/account'][index]);
+          context
+              .go(['/home', '/artist', '/song', '/album', '/account'][index]);
         },
         index: selectedIndex,
       ),

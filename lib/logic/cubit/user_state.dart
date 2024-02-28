@@ -1,8 +1,8 @@
 part of 'user_cubit.dart';
 
 class UserState {
-  String userName;
+  String email;
   String password;
 
-  UserState({required this.userName, required this.password});
+  UserState({required this.email, required this.password});
 }

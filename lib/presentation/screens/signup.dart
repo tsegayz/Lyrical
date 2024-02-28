@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
+import 'package:chainoftrust/logic/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'hexagon.dart';
+
+final _formKey = GlobalKey<FormState>();
 
 class SignUp extends StatelessWidget {
   final List<String> imagePaths = [
@@ -15,6 +19,17 @@ class SignUp extends StatelessWidget {
     'assets/img_8.jpg',
     'assets/img_9.jpg',
   ];
+
+  String? validateEmail(String? email) {
+    RegExp emailRegex = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+
+    final isEmailValid = emailRegex.hasMatch(email ?? '');
+    if (!isEmailValid) {
+      return 'please enter a valid email';
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -145,90 +160,128 @@ class SignUp extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 80.0),
                     child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10),
-                          Text(
-                            'Sign up',
-                            style: TextStyle(
-                              fontFamily: 'OrelegaOne',
-                              fontSize: 30,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          SizedBox(height: 20),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Email',
-                              labelStyle: TextStyle(color: Colors.grey[600]),
-                              border: InputBorder.none,
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 18, 22, 58),
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 209, 209, 209),
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Color.fromARGB(255, 248, 248, 248),
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: 10,
-                                horizontal: 20,
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            SizedBox(height: 10),
+                            Text(
+                              'Sign up',
+                              style: TextStyle(
+                                fontFamily: 'OrelegaOne',
+                                fontSize: 30,
+                                color: Colors.grey[600],
                               ),
                             ),
-                          ),
-                          SizedBox(height: 20),
-                          TextFormField(
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              labelText: 'Password',
-                              labelStyle: TextStyle(color: Colors.grey[600]),
-                              border: InputBorder.none,
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 18, 22, 58),
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(
-                                  color: Color.fromARGB(255, 209, 209, 209),
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Color.fromARGB(255, 248, 248, 248),
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: 10,
-                                horizontal: 20,
-                              ),
+                            SizedBox(height: 20),
+                            BlocBuilder<UserCubit, UserState>(
+                              builder: (context, state) {
+                                return TextFormField(
+                                  validator: validateEmail,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  onChanged: (value) {
+                                    context
+                                        .read<UserCubit>()
+                                        .updateEmail(value);
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: 'Email',
+                                    labelStyle:
+                                        TextStyle(color: Colors.grey[600]),
+                                    border: InputBorder.none,
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(40),
+                                      borderSide: BorderSide(
+                                        color: Color.fromARGB(255, 18, 22, 58),
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(40),
+                                      borderSide: BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 209, 209, 209),
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor:
+                                        Color.fromARGB(255, 248, 248, 248),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: 20,
+                                    ),
+                                  ),
+                                  initialValue: state.email,
+                                );
+                              },
                             ),
-                          ),
-                          SizedBox(height: 30),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                Color.fromARGB(255, 7, 25, 46),
-                              ),
-                              shape: MaterialStateProperty.all<OutlinedBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
+                            SizedBox(height: 20),
+                            BlocBuilder<UserCubit, UserState>(
+                              builder: (context, state) {
+                                return TextFormField(
+                                  validator: (value) => value!.length < 8
+                                      ? 'password should be 8 characters'
+                                      : null,
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
+                                  onChanged: (value) {
+                                    context
+                                        .read<UserCubit>()
+                                        .updatePassword(value);
+                                  },
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    labelText: 'Password',
+                                    labelStyle:
+                                        TextStyle(color: Colors.grey[600]),
+                                    border: InputBorder.none,
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(40),
+                                      borderSide: BorderSide(
+                                        color: Color.fromARGB(255, 18, 22, 58),
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(40),
+                                      borderSide: BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 209, 209, 209),
+                                      ),
+                                    ),
+                                    filled: true,
+                                    fillColor:
+                                        Color.fromARGB(255, 248, 248, 248),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: 20,
+                                    ),
+                                  ),
+                                  initialValue: state.password,
+                                );
+                              },
+                            ),
+                            SizedBox(height: 30),
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  GoRouter.of(context).go('/home');
+                                }
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  Color.fromARGB(255, 7, 25, 46),
+                                ),
+                                shape:
+                                    MaterialStateProperty.all<OutlinedBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: TextButton(
-                                onPressed: () {
-                                  context.go('/home');
-                                },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Text(
                                   'Sign up',
                                   style: TextStyle(
@@ -238,8 +291,8 @@ class SignUp extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -1,14 +1,16 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, dead_code
+import 'package:chainoftrust/logic/cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ImageData {
   final String image;
-  final String title;
+  final String artist;
 
-  ImageData({required this.image, required this.title});
+  ImageData({required this.image, required this.artist});
 }
 
 class BottomBar {
@@ -19,25 +21,29 @@ class BottomBar {
 }
 
 class Artist extends StatefulWidget {
+
   @override
   _ArtistState createState() => _ArtistState();
 }
 
 class _ArtistState extends State<Artist> {
   bool _isSearchExpanded = false;
+  final TextEditingController searchController = TextEditingController();
+
+  int selectedIndex = 1;
 
   final List<ImageData> images = [
-    ImageData(image: 'assets/img_1.jpg', title: 'Aeb'),
-    ImageData(image: 'assets/img_2.jpg', title: 'Samuel'),
-    ImageData(image: 'assets/img_3.jpg', title: 'Yosef'),
-    ImageData(image: 'assets/img_4.jpg', title: 'Meskerem'),
-    ImageData(image: 'assets/img_5.jpg', title: 'Daniel'),
-    ImageData(image: 'assets/img_6.jpg', title: 'Lily'),
-    ImageData(image: 'assets/img_7.jpg', title: 'Mesfin'),
-    ImageData(image: 'assets/img_8.jpg', title: 'Dagmawi'),
-    ImageData(image: 'assets/img_9.jpg', title: 'Bethelhem'),
+    ImageData(image: 'assets/img_1.jpg', artist: 'Azeb'),
+    ImageData(image: 'assets/img_2.jpg', artist: 'Samuel'),
+    ImageData(image: 'assets/img_3.jpg', artist: 'Yosef'),
+    ImageData(image: 'assets/img_4.jpg', artist: 'Meskerem'),
+    ImageData(image: 'assets/img_5.jpg', artist: 'Daniel'),
+    ImageData(image: 'assets/img_6.jpg', artist: 'Lily'),
+    ImageData(image: 'assets/img_7.jpg', artist: 'Mesfin'),
+    ImageData(image: 'assets/img_8.jpg', artist: 'Dagmawi'),
+    ImageData(image: 'assets/img_9.jpg', artist: 'Bethelhem'),
   ];
-final List<BottomBar> bars = [
+  final List<BottomBar> bars = [
     BottomBar(icon: Icons.home_rounded, title: 'Home'),
     BottomBar(icon: Icons.album_outlined, title: 'Artists'),
     BottomBar(icon: Icons.music_note_rounded, title: 'Songs'),
@@ -45,7 +51,29 @@ final List<BottomBar> bars = [
     BottomBar(icon: Icons.person_outline, title: 'Account'),
   ];
 
-  int selectedIndex = 1;
+  List<ImageData> filteredImages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredImages = List.from(images);
+  }
+
+  void searchArtist(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredImages = List.from(images);
+      } else {
+        filteredImages = images.where((image) {
+          final artistTitle = image.artist.toLowerCase();
+          final input = query.toLowerCase();
+
+          return artistTitle.contains(input);
+        }).toList();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +144,8 @@ final List<BottomBar> bars = [
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: TextFormField(
+                                  onChanged: searchArtist,
+                                  controller: searchController,
                                   decoration: InputDecoration(
                                     hintText: 'Search...',
                                     hintStyle:
@@ -171,11 +201,34 @@ final List<BottomBar> bars = [
         actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://via.placeholder.com/150',
+            child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 0,
+                    blurRadius: 3,
+                    offset: Offset(1, 1),
+                  ),
+                ],
+                shape: BoxShape.circle,
               ),
-              radius: 15,
+              child: Center(
+                child: BlocBuilder<UserCubit, UserState>(
+                  builder: (context, state) {
+                    return Text(
+                      state.email[0].toUpperCase(),
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 7, 39),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
           ),
           SizedBox(width: 10),
@@ -203,8 +256,9 @@ final List<BottomBar> bars = [
                 height: 630,
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
-                  itemCount: images.length,
+                  itemCount: filteredImages.length,
                   itemBuilder: (BuildContext context, int index) {
+                    final imageData = filteredImages[index];
                     return Padding(
                       padding: EdgeInsets.only(bottom: 20, right: 5),
                       child: Row(
@@ -227,7 +281,7 @@ final List<BottomBar> bars = [
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12),
                                   child: Image.asset(
-                                    images[index].image,
+                                    imageData.image,
                                     width: 55,
                                     height: 45,
                                     fit: BoxFit.cover,
@@ -239,7 +293,7 @@ final List<BottomBar> bars = [
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    images[index].title,
+                                    imageData.artist,
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -291,7 +345,7 @@ final List<BottomBar> bars = [
                       Icon(data.icon, size: 22, color: Colors.white),
                       Text(
                         data.title,
-                        style: TextStyle(fontSize: 10,  color: Colors.white),
+                        style: TextStyle(fontSize: 10, color: Colors.white),
                       ),
                     ],
                   ),

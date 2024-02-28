@@ -19,7 +19,7 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 5), () {
-      context.go('/home');
+      context.go('/signup');
     });
 
     return Scaffold(
@@ -139,8 +139,8 @@ class Welcome extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(60, 60, 60, 0),
                 child: SizedBox(
-                  width: 80, 
-                  height: 80, 
+                  width: 80,
+                  height: 80,
                   child: Image.asset(
                     'assets/headphone.jpg',
                     fit: BoxFit.contain,

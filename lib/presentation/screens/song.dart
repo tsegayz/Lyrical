@@ -7,8 +7,9 @@ import 'package:go_router/go_router.dart';
 class ImageData {
   final String image;
   final String title;
+  final String artist;
 
-  ImageData({required this.image, required this.title});
+  ImageData({required this.image, required this.title, required this.artist});
 }
 
 class BottomBar {
@@ -27,15 +28,51 @@ class _SongState extends State<Song> {
   bool _isSearchExpanded = false;
 
   final List<ImageData> images = [
-    ImageData(image: 'assets/img_1.jpg', title: 'Aeb'),
-    ImageData(image: 'assets/img_2.jpg', title: 'Samuel'),
-    ImageData(image: 'assets/img_3.jpg', title: 'Yosef'),
-    ImageData(image: 'assets/img_4.jpg', title: 'Meskerem'),
-    ImageData(image: 'assets/img_5.jpg', title: 'Daniel'),
-    ImageData(image: 'assets/img_6.jpg', title: 'Lily'),
-    ImageData(image: 'assets/img_7.jpg', title: 'Mesfin'),
-    ImageData(image: 'assets/img_8.jpg', title: 'Dagmawi'),
-    ImageData(image: 'assets/img_9.jpg', title: 'Bethelhem'),
+    ImageData(
+      image: 'assets/img_1.jpg',
+      artist: 'Azeb',
+      title: 'sasebew',
+    ),
+    ImageData(
+      image: 'assets/img_2.jpg',
+      artist: 'Samuel',
+      title: 'tilik nehe',
+    ),
+    ImageData(
+      image: 'assets/img_3.jpg',
+      artist: 'Yosef',
+      title: 'abetu amlake',
+    ),
+    ImageData(
+      image: 'assets/img_4.jpg',
+      artist: 'Meskerem',
+      title: 'melkam nehe',
+    ),
+    ImageData(
+      image: 'assets/img_5.jpg',
+      artist: 'Daniel',
+      title: 'yenebse',
+    ),
+    ImageData(
+      image: 'assets/img_6.jpg',
+      artist: 'Lily',
+      title: 'medhanit',
+    ),
+    ImageData(
+      image: 'assets/img_7.jpg',
+      artist: 'Mesfin',
+      title: 'eyesus',
+    ),
+    ImageData(
+      image: 'assets/img_8.jpg',
+      artist: 'Dagmawi',
+      title: 'amelkehalew',
+    ),
+    ImageData(
+      image: 'assets/img_9.jpg',
+      artist: 'Bethelhem',
+      title: 'feker nehe',
+    ),
   ];
   final List<BottomBar> bars = [
     BottomBar(icon: Icons.home_rounded, title: 'Home'),
@@ -45,6 +82,31 @@ class _SongState extends State<Song> {
     BottomBar(icon: Icons.person_outline, title: 'Account'),
   ];
   int selectedIndex = 2;
+
+  final TextEditingController searchController = TextEditingController();
+  List<ImageData> filteredImages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredImages = List.from(images);
+  }
+
+  void searchArtist(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredImages = List.from(images);
+      } else {
+        filteredImages = images.where((image) {
+          final artistTitle = image.title.toLowerCase();
+          final input = query.toLowerCase();
+
+          return artistTitle.contains(input);
+        }).toList();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +114,7 @@ class _SongState extends State<Song> {
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         titleSpacing: 0,
         title: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
+          padding: const EdgeInsets.only(top: 15.0, left: 10),
           child: Stack(
             children: [
               Row(
@@ -115,6 +177,8 @@ class _SongState extends State<Song> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15),
                               child: TextFormField(
+                                  onChanged: searchArtist,
+                                  controller: searchController,
                                   decoration: InputDecoration(
                                     hintText: 'Search...',
                                     hintStyle:
@@ -161,24 +225,15 @@ class _SongState extends State<Song> {
                         },
                       ),
                     ),
+                    SizedBox(
+                      width: 10,
+                    )
                   ],
                 ),
               ),
             ],
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://via.placeholder.com/150',
-              ),
-              radius: 15,
-            ),
-          ),
-          SizedBox(width: 10),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 28, right: 5, top: 15),
@@ -202,8 +257,9 @@ class _SongState extends State<Song> {
                 height: 630,
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
-                  itemCount: images.length,
+                  itemCount: filteredImages.length,
                   itemBuilder: (BuildContext context, int index) {
+                    final imageData = filteredImages[index];
                     return Padding(
                       padding: EdgeInsets.only(bottom: 20, right: 5),
                       child: Row(
@@ -236,7 +292,7 @@ class _SongState extends State<Song> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Title one',
+                                    imageData.title,
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.bold,
@@ -244,7 +300,7 @@ class _SongState extends State<Song> {
                                     ),
                                   ),
                                   Text(
-                                    images[index].title,
+                                    imageData.artist,
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.grey[600],
@@ -298,7 +354,8 @@ class _SongState extends State<Song> {
           setState(() {
             selectedIndex = index;
           });
-          context.go(['/home', '/artist', '/song','/album', '/account'][index]);
+          context
+              .go(['/home', '/artist', '/song', '/album', '/account'][index]);
         },
         index: selectedIndex,
       ),

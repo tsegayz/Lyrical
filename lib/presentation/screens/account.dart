@@ -119,162 +119,128 @@ class _AccountState extends State<Account> {
                   ],
                 ),
               ),
-              Positioned(
-                top: 350,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 64, right: 5, top: 15),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 290,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(7),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: Offset(1, 1),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 290,
-                              padding: EdgeInsets.only(bottom: 5),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom:
-                                      BorderSide(color: Colors.grey.shade300),
-                                ),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(25, 18, 25, 8),
-                                child: BlocBuilder<UserCubit, UserState>(
-                                  builder: (context, state) {
-                                    return Row(
-                                      children: [
-                                        Icon(
-                                          Icons.person_4,
-                                          color:
-                                              Color.fromARGB(255, 88, 88, 88),
-                                          size: 17,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'Account detail: ${state.email}',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              color:
-                                                  Color.fromARGB(255, 2, 6, 27),
-                                            ),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(bottom: 5),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom:
-                                      BorderSide(color: Colors.grey.shade300),
-                                ),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(25, 18, 25, 8),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.location_on_outlined,
-                                      color: Color.fromARGB(255, 88, 88, 88),
-                                      size: 17,
-                                    ),
-                                    Text(
-                                      'My Address',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+              Padding(
+                padding: const EdgeInsets.only(left: 64, right: 5, top: 370),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 290,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(7),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 1,
+                            offset: Offset(1, 1),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 20),
-                      Container(
-                        width: 290,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(7),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset: Offset(1, 1),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 290,
-                              padding: EdgeInsets.only(bottom: 5),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom:
-                                      BorderSide(color: Colors.grey.shade300),
-                                ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 290,
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(color: Colors.grey.shade300),
                               ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(25, 18, 25, 8),
-                                child: GestureDetector(
-                                  onTap: () {
-                                        print('clicked');
-                                        showDialog(
-                                            context: context,
-                                            builder: (context) => AlertDialog(
-                                                  title: Text(
-                                                      'Lyrical Application'),
-                                                  content: Text(
-                                                      "Lorem dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi ut elit tempor aliquam eget eget enim. Proin cursus eleifend pretium. Aliquam cursus "),
-                                                ));
-                                      },
-                                  child: Row(
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 18, 25, 8),
+                              child: BlocBuilder<UserCubit, UserState>(
+                                builder: (context, state) {
+                                  return Row(
                                     children: [
                                       Icon(
-                                        Icons.info,
+                                        Icons.person_4,
                                         color: Color.fromARGB(255, 88, 88, 88),
                                         size: 17,
                                       ),
-                                      Text(
-                                        'About us',
-                                        style: TextStyle(
-                                          fontSize: 16,
+                                      Expanded(
+                                        child: Text(
+                                          'Account detail: ${state.email}',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color:
+                                                Color.fromARGB(255, 2, 6, 27),
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                     ],
-                                  ),
-                                ),
+                                  );
+                                },
                               ),
                             ),
-                            Container(
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(color: Colors.grey.shade300),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 18, 25, 8),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_outlined,
+                                    color: Color.fromARGB(255, 88, 88, 88),
+                                    size: 17,
+                                  ),
+                                  Text(
+                                    'My Address',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      width: 290,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(7),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 1,
+                            offset: Offset(1, 1),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: Center(
+                                          child: Text(
+                                            'Lyrical Application',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        content: Text(
+                                            "Lorem dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi ut elit tempor aliquam eget eget enim. Proin cursus eleifend pretium. Aliquam cursus "),
+                                      ));
+                            },
+                            child: Container(
                               width: 290,
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(
@@ -289,12 +255,12 @@ class _AccountState extends State<Account> {
                                 child: Row(
                                   children: [
                                     Icon(
-                                      Icons.star_rate_outlined,
+                                      Icons.info,
                                       color: Color.fromARGB(255, 88, 88, 88),
                                       size: 17,
                                     ),
                                     Text(
-                                      'Rate App',
+                                      'About us',
                                       style: TextStyle(
                                         fontSize: 16,
                                       ),
@@ -303,7 +269,39 @@ class _AccountState extends State<Account> {
                                 ),
                               ),
                             ),
-                            Container(
+                          ),
+                          Container(
+                            width: 290,
+                            padding: EdgeInsets.only(bottom: 5),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(color: Colors.grey.shade300),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(25, 18, 25, 8),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.star_rate_outlined,
+                                    color: Color.fromARGB(255, 88, 88, 88),
+                                    size: 17,
+                                  ),
+                                  Text(
+                                    'Rate App',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Share.share('com.example.share_app');
+                            },
+                            child: Container(
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(
                                 border: Border(
@@ -321,26 +319,21 @@ class _AccountState extends State<Account> {
                                       color: Color.fromARGB(255, 88, 88, 88),
                                       size: 17,
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Share.share('com.example.share_app');
-                                      },
-                                      child: Text(
-                                        'Share App',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                        ),
+                                    Text(
+                                      'Share App',
+                                      style: TextStyle(
+                                        fontSize: 16,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

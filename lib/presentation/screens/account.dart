@@ -146,18 +146,21 @@ class _AccountState extends State<Account> {
                             padding: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                               border: Border(
-                                bottom: BorderSide(color: Colors.grey.shade300),
+                                bottom:
+                                    BorderSide(color: Colors.grey.shade300),
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(25, 18, 25, 8),
+                              padding:
+                                  const EdgeInsets.fromLTRB(25, 18, 25, 8),
                               child: BlocBuilder<UserCubit, UserState>(
                                 builder: (context, state) {
                                   return Row(
                                     children: [
                                       Icon(
                                         Icons.person_4,
-                                        color: Color.fromARGB(255, 88, 88, 88),
+                                        color:
+                                            Color.fromARGB(255, 88, 88, 88),
                                         size: 17,
                                       ),
                                       Expanded(
@@ -182,11 +185,13 @@ class _AccountState extends State<Account> {
                             padding: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                               border: Border(
-                                bottom: BorderSide(color: Colors.grey.shade300),
+                                bottom:
+                                    BorderSide(color: Colors.grey.shade300),
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(25, 18, 25, 8),
+                              padding:
+                                  const EdgeInsets.fromLTRB(25, 18, 25, 8),
                               child: Row(
                                 children: [
                                   Icon(
@@ -275,11 +280,13 @@ class _AccountState extends State<Account> {
                             padding: EdgeInsets.only(bottom: 5),
                             decoration: BoxDecoration(
                               border: Border(
-                                bottom: BorderSide(color: Colors.grey.shade300),
+                                bottom:
+                                    BorderSide(color: Colors.grey.shade300),
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.fromLTRB(25, 18, 25, 8),
+                              padding:
+                                  const EdgeInsets.fromLTRB(25, 18, 25, 8),
                               child: Row(
                                 children: [
                                   Icon(
@@ -299,8 +306,8 @@ class _AccountState extends State<Account> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Share.share('com.example.share_app');
-                            },
+                                      Share.share('com.example.share_app');
+                                    },
                             child: Container(
                               padding: EdgeInsets.only(bottom: 5),
                               decoration: BoxDecoration(

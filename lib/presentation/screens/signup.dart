@@ -138,32 +138,29 @@ class SignUp extends StatelessWidget {
               ),
               Expanded(
                 flex: 8,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(90.0),
-                      topRight: Radius.circular(90),
-                      bottomLeft: Radius.circular(0),
-                      bottomRight: Radius.circular(0),
+                child: SingleChildScrollView(
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(45, 10, 35, 100),
+                    height: 300,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: Offset(1, 1),
+                        ),
+                      ],
+                      color: Color.fromARGB(143, 241, 247, 255),
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 0,
-                        blurRadius: 3,
-                        offset: Offset(0, 0),
-                      ),
-                    ],
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 80.0),
-                    child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Form(
                         key: _formKey,
                         child: Column(
                           children: [
-                            SizedBox(height: 10),
+                            SizedBox(height: 15),
                             Text(
                               'Sign up',
                               style: TextStyle(

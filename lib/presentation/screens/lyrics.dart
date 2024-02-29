@@ -68,16 +68,11 @@ class Lyrics extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 320),
-                width: 412,
-                height: 495,
+                margin: EdgeInsets.only(top: 320, left: 35),
+                width: 340,
+                height: 455,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(90.0),
-                    topRight: Radius.circular(90),
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(0),
-                  ),
+                  borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
@@ -90,7 +85,7 @@ class Lyrics extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromARGB(255, 221, 239, 255),
+                      Color.fromARGB(255, 234, 245, 255),
                       Color.fromARGB(255, 255, 255, 255),
                     ],
                   ),

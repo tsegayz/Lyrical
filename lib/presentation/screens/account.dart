@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:share/share.dart';
 
 class BottomBar {
   final IconData icon;
@@ -164,12 +165,16 @@ class _AccountState extends State<Account> {
                                               Color.fromARGB(255, 88, 88, 88),
                                           size: 17,
                                         ),
-                                        Text(
-                                          'Account detail: ${state.email}',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color:
-                                                Color.fromARGB(255, 2, 6, 27),
+                                        Expanded(
+                                          child: Text(
+                                            'Account detail: ${state.email}',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color:
+                                                  Color.fromARGB(255, 2, 6, 27),
+                                            ),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ],
@@ -239,20 +244,33 @@ class _AccountState extends State<Account> {
                               child: Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(25, 18, 25, 8),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.info,
-                                      color: Color.fromARGB(255, 88, 88, 88),
-                                      size: 17,
-                                    ),
-                                    Text(
-                                      'About us',
-                                      style: TextStyle(
-                                        fontSize: 16,
+                                child: GestureDetector(
+                                  onTap: () {
+                                        print('clicked');
+                                        showDialog(
+                                            context: context,
+                                            builder: (context) => AlertDialog(
+                                                  title: Text(
+                                                      'Lyrical Application'),
+                                                  content: Text(
+                                                      "Lorem dolor sit amet, consectetur adipiscing elit. Pellentesque vel mi ut elit tempor aliquam eget eget enim. Proin cursus eleifend pretium. Aliquam cursus "),
+                                                ));
+                                      },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.info,
+                                        color: Color.fromARGB(255, 88, 88, 88),
+                                        size: 17,
                                       ),
-                                    ),
-                                  ],
+                                      Text(
+                                        'About us',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -303,10 +321,15 @@ class _AccountState extends State<Account> {
                                       color: Color.fromARGB(255, 88, 88, 88),
                                       size: 17,
                                     ),
-                                    Text(
-                                      'Share App',
-                                      style: TextStyle(
-                                        fontSize: 16,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Share.share('com.example.share_app');
+                                      },
+                                      child: Text(
+                                        'Share App',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
                                       ),
                                     ),
                                   ],

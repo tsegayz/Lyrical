@@ -58,6 +58,10 @@ meta
 2.12
 file:///home/tsega/.pub-cache/hosted/pub.dev/meta-1.10.0/
 file:///home/tsega/.pub-cache/hosted/pub.dev/meta-1.10.0/lib/
+mime
+3.2
+file:///home/tsega/.pub-cache/hosted/pub.dev/mime-1.0.5/
+file:///home/tsega/.pub-cache/hosted/pub.dev/mime-1.0.5/lib/
 nested
 2.12
 file:///home/tsega/.pub-cache/hosted/pub.dev/nested-1.0.0/
@@ -70,6 +74,10 @@ provider
 2.12
 file:///home/tsega/.pub-cache/hosted/pub.dev/provider-6.1.1/
 file:///home/tsega/.pub-cache/hosted/pub.dev/provider-6.1.1/lib/
+share
+2.12
+file:///home/tsega/.pub-cache/hosted/pub.dev/share-2.0.4/
+file:///home/tsega/.pub-cache/hosted/pub.dev/share-2.0.4/lib/
 source_span
 2.18
 file:///home/tsega/.pub-cache/hosted/pub.dev/source_span-1.10.0/

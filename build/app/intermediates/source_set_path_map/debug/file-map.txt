@@ -10,3 +10,4 @@ com.example.chainoftrust.app-rs-8 /home/tsega/Desktop/Mobile/Lyrical/build/app/g
 com.example.chainoftrust.app-mergeDebugResources-9 /home/tsega/Desktop/Mobile/Lyrical/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
 com.example.chainoftrust.app-mergeDebugResources-10 /home/tsega/Desktop/Mobile/Lyrical/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.chainoftrust.app-merged_res-11 /home/tsega/Desktop/Mobile/Lyrical/build/app/intermediates/merged_res/debug
+com.example.chainoftrust.app-packaged_res-12 /home/tsega/Desktop/Mobile/Lyrical/build/share/intermediates/packaged_res/debug

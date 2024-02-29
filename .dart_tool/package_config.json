@@ -104,6 +104,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mime",
+      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/mime-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/nested-1.0.0",
       "packageUri": "lib/",
@@ -118,6 +124,12 @@
     {
       "name": "provider",
       "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/provider-6.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share",
+      "rootUri": "file:///home/tsega/.pub-cache/hosted/pub.dev/share-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -182,7 +194,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-28T14:30:08.210466Z",
+  "generated": "2024-02-29T09:13:36.248031Z",
   "generator": "pub",
   "generatorVersion": "3.2.6"
 }

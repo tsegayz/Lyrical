@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:chainoftrust/presentation/screens/account.dart';
 import 'package:chainoftrust/presentation/screens/artist_album.dart';
 import 'package:flutter/material.dart';
@@ -16,55 +18,28 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final UserCubit _userCubit = UserCubit();
-
+class MyApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Welcome(),
-        '/signup': (context) => BlocProvider.value(
-              value: _userCubit,
-              child: SignUp(),
-            ),
-        '/home': (context) => BlocProvider.value(
-              value: _userCubit,
-              child: Home(),
-            ),
-        '/artist': (context) => BlocProvider.value(
-              value: _userCubit,
-              child: Artist(),
-            ),
-        '/song': (context) => Song(),
-        '/album': (context) => BlocProvider.value(
-              value: _userCubit,
-              child: Album(),
-            ),
-        '/artistAlbum': (context) => BlocProvider.value(
-              value: _userCubit,
-              child: ArtistAlbum(),
-            ),
-        '/albumSong': (context) => AlbumSong(),
-        '/lyrics': (context) => Lyrics(),
-        '/account': (context) => BlocProvider.value(
-              value: _userCubit,
-              child: Account(),
-            ),
-      },
+    return BlocProvider(
+      create: (context) => UserCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Welcome(),
+          '/signup': (context) => SignUp(),
+          '/home': (context) => Home(),
+          '/artist': (context) => Artist(),
+          '/song': (context) => Song(),
+          '/album': (context) => Album(),
+          '/artistAlbum': (context) => ArtistAlbum(),
+          '/albumSong': (context) => AlbumSong(),
+          '/lyrics': (context) => Lyrics(),
+          '/account': (context) => Account(),
+        },
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    _userCubit.close();
-    super.dispose();
   }
 }
